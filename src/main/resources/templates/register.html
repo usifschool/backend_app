@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="text-center">Register</h1>
+
+            <!-- Display success message -->
+            <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
+
+            <!-- Display error message -->
+            <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+            <!-- Registration Form -->
+            <form th:action="@{/register}" th:object="${user}" method="post">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" id="email" th:field="*{email}" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" id="password" th:field="*{password}" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">Full Name:</label>
+                    <input type="text" id="fullName" th:field="*{fullName}" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+
+                <div class="mb-3">
+                    <p>Already have an account? <a th:href="@{/login}" class="btn btn-link">Login here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
